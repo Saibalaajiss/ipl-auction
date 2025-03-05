@@ -1,0 +1,54 @@
+.team-stats {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+}
+
+.team-stats.fullscreen {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.stats-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.stats-row:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.team-name {
+    color: white;
+}
+
+.team-purse {
+    color: #FFD700;
+    text-align: center;
+}
+
+.team-players {
+    text-align: center;
+    color: #aaa;
+} 

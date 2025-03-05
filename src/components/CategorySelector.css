@@ -1,0 +1,26 @@
+.category-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.category-button.active {
+    background: #FFD700;
+    color: #1a1a2e;
+} 

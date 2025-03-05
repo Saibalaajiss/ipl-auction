@@ -1,0 +1,376 @@
+.leaderboard-container {
+  padding: 2rem;
+  color: white;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.leaderboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #FFD700;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rank {
+  background: #FFD700;
+  color: #1a1a2e;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.team-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.team-points {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  color: #FFD700;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.team-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-box {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.stat-label {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  color: #FFD700;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.squad-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.squad-title {
+  color: #FFD700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.player-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.player-row:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.player-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.player-details {
+  display: flex;
+  gap: 1.5rem;
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 1200px) {
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-header {
+    grid-template-columns: auto 1fr;
+  }
+  
+  .team-points {
+    grid-column: 1 / -1;
+  }
+  
+  .stat-box {
+    padding: 1.5rem;
+  }
+}
+
+/* Team-specific dominant colors */
+.team-card[data-team="Chennai Super Kings"] {
+  background: linear-gradient(135deg, #FDB913 0%, rgba(41, 35, 92, 0.9) 100%);
+  border: 2px solid #FDB913;
+}
+
+.team-card[data-team="Mumbai Indians"] {
+  background: linear-gradient(135deg, #004BA0 0%, rgba(0, 51, 153, 0.9) 100%);
+  border: 2px solid #004BA0;
+}
+
+.team-card[data-team="Royal Challengers Bangalore"] {
+  background: linear-gradient(135deg, #EC1C24 0%, rgba(0, 0, 0, 0.9) 100%);
+  border: 2px solid #EC1C24;
+}
+
+.team-card[data-team="Kolkata Knight Riders"] {
+  background: linear-gradient(135deg, #3A225D 0%, rgba(30, 16, 47, 0.9) 100%);
+  border: 2px solid #6F2DA8;
+}
+
+.team-card[data-team="Delhi Capitals"] {
+  background: linear-gradient(135deg, #0078BC 0%, rgba(234, 0, 41, 0.9) 100%);
+  border: 2px solid #0078BC;
+}
+
+.team-card[data-team="Punjab Kings"] {
+  background: linear-gradient(135deg, #ED1B24 0%, rgba(51, 0, 0, 0.9) 100%);
+  border: 2px solid #ED1B24;
+}
+
+.team-card[data-team="Rajasthan Royals"] {
+  background: linear-gradient(135deg, #FF1493 0%, rgba(0, 0, 102, 0.9) 100%);
+  border: 2px solid #FF1493;
+}
+
+.team-card[data-team="Sunrisers Hyderabad"] {
+  background: linear-gradient(135deg, #FF822A 0%, rgba(51, 0, 0, 0.9) 100%);
+  border: 2px solid #FF822A;
+}
+
+.team-card[data-team="Gujarat Titans"] {
+  background: linear-gradient(135deg, #1B2133 0%, rgba(0, 0, 51, 0.9) 100%);
+  border: 2px solid #1B2133;
+}
+
+.team-card[data-team="Lucknow Super Giants"] {
+  background: linear-gradient(135deg, #A7D5E6 0%, rgba(0, 51, 51, 0.9) 100%);
+  border: 2px solid #A7D5E6;
+}
+
+/* Team-specific stat boxes */
+.team-card[data-team="Chennai Super Kings"] .stat-box {
+  background: rgba(253, 185, 19, 0.3);
+}
+
+.team-card[data-team="Mumbai Indians"] .stat-box {
+  background: rgba(0, 75, 160, 0.3);
+}
+
+.team-card[data-team="Royal Challengers Bangalore"] .stat-box {
+  background: rgba(236, 28, 36, 0.3);
+}
+
+.team-card[data-team="Kolkata Knight Riders"] .stat-box {
+  background: rgba(58, 34, 93, 0.3);
+}
+
+.team-card[data-team="Delhi Capitals"] .stat-box {
+  background: rgba(0, 120, 188, 0.3);
+}
+
+.team-card[data-team="Punjab Kings"] .stat-box {
+  background: rgba(237, 27, 36, 0.3);
+}
+
+.team-card[data-team="Rajasthan Royals"] .stat-box {
+  background: rgba(255, 20, 147, 0.3);
+}
+
+.team-card[data-team="Sunrisers Hyderabad"] .stat-box {
+  background: rgba(255, 130, 42, 0.3);
+}
+
+.team-card[data-team="Gujarat Titans"] .stat-box {
+  background: rgba(27, 33, 51, 0.3);
+}
+
+.team-card[data-team="Lucknow Super Giants"] .stat-box {
+  background: rgba(167, 213, 230, 0.3);
+}
+
+/* Squad section styling with team colors */
+.team-card[data-team="Chennai Super Kings"] .squad-section {
+  background: rgba(253, 185, 19, 0.2);
+}
+
+.team-card[data-team="Mumbai Indians"] .squad-section {
+  background: rgba(0, 75, 160, 0.2);
+}
+
+/* Add similar squad-section styling for other teams */
+
+/* Player row styling with team colors */
+.team-card[data-team="Chennai Super Kings"] .player-row {
+  background: rgba(253, 185, 19, 0.15);
+  border: 1px solid rgba(253, 185, 19, 0.3);
+}
+
+.team-card[data-team="Mumbai Indians"] .player-row {
+  background: rgba(0, 75, 160, 0.15);
+  border: 1px solid rgba(0, 75, 160, 0.3);
+}
+
+/* Add similar player-row styling for other teams */
+
+/* Enhanced hover effects */
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.player-row:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Team-specific rank colors */
+.team-card[data-team="Chennai Super Kings"] .rank {
+  background: #FDB913;
+  color: #27234D;
+}
+
+.team-card[data-team="Mumbai Indians"] .rank {
+  background: #004BA0;
+}
+
+.team-card[data-team="Royal Challengers Bangalore"] .rank {
+  background: #EC1C24;
+}
+
+.team-card[data-team="Kolkata Knight Riders"] .rank {
+  background: #3A225D;
+}
+
+.team-card[data-team="Delhi Capitals"] .rank {
+  background: #0078BC;
+}
+
+.team-card[data-team="Punjab Kings"] .rank {
+  background: #ED1B24;
+}
+
+.team-card[data-team="Rajasthan Royals"] .rank {
+  background: #FF1493;
+}
+
+.team-card[data-team="Sunrisers Hyderabad"] .rank {
+  background: #FF822A;
+}
+
+.team-card[data-team="Gujarat Titans"] .rank {
+  background: #1B2133;
+}
+
+.team-card[data-team="Lucknow Super Giants"] .rank {
+  background: #A7D5E6;
+  color: #1B2133;
+}
+
+/* Team-specific stat value colors */
+.team-card[data-team="Chennai Super Kings"] .stat-value {
+  color: #FDB913;
+}
+
+.team-card[data-team="Mumbai Indians"] .stat-value {
+  color: #004BA0;
+}
+
+.team-card[data-team="Royal Challengers Bangalore"] .stat-value {
+  color: #EC1C24;
+}
+
+/* ... add similar stat-value colors for other teams ... */
+
+/* Team-specific stat value colors */
+.team-card[data-team="Chennai Super Kings"] .stat-value {
+  color: #FDB913;
+}
+
+.team-card[data-team="Mumbai Indians"] .stat-value {
+  color: #004BA0;
+}
+
+.team-card[data-team="Royal Challengers Bangalore"] .stat-value {
+  color: #EC1C24;
+}
+
+/* ... add similar stat-value colors for other teams ... */
+
+/* Squad title */
+.squad-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+} 
