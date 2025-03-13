@@ -553,3 +553,106 @@
     transform: scale(1.2);
   }
 }
+
+.search-input {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #FFD700;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  width: 300px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #FFA500;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.search-input:hover {
+  border-color: #FFA500;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid #FFD700;
+  border-radius: 15px;
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.search-result-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateX(5px);
+}
+
+.player-search-name {
+  font-size: 1.2rem;
+  color: #FFD700;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.player-search-details {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.player-search-details span {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: #FFA500;
+}

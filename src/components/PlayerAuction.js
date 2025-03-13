@@ -5,6 +5,7 @@ import Leaderboard from './Leaderboard';
 
 const PlayerAuction = () => {
   const [players, setPlayers] = useState([]);
+  const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [currentBid, setCurrentBid] = useState(0);
   const [selectedTeam, setSelectedTeam] = useState('');
@@ -16,6 +17,8 @@ const PlayerAuction = () => {
   const [previousCategory, setPreviousCategory] = useState('');
   const [isAuctionComplete, setIsAuctionComplete] = useState(false);
   const [auctionHistory, setAuctionHistory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchResults, setShowSearchResults] = useState(false);
 
   const [teams, setTeams] = useState([
     { name: 'Chennai Super Kings', purse: 1200000000, players: [] },
@@ -56,6 +59,7 @@ const PlayerAuction = () => {
               }
             }));
             setPlayers(parsedPlayers);
+            setFilteredPlayers(parsedPlayers);
             if (parsedPlayers.length > 0) {
               setCurrentCategory(parsedPlayers[0].category);
             }
@@ -70,6 +74,22 @@ const PlayerAuction = () => {
 
     loadPlayers();
   }, []);
+
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      setFilteredPlayers(players);
+      setShowSearchResults(false);
+      return;
+    }
+
+    const filtered = players.filter(player => 
+      player.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      player.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      player.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredPlayers(filtered);
+    setShowSearchResults(true);
+  }, [searchQuery, players]);
 
   useEffect(() => {
     if (players.length === 0) return;
@@ -168,6 +188,17 @@ const PlayerAuction = () => {
     return circumference - timeLeft;
   };
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handlePlayerSelect = (player) => {
+    const index = players.findIndex(p => p.id === player.id);
+    setCurrentPlayerIndex(index);
+    setSearchQuery('');
+    setShowSearchResults(false);
+  };
+
   if (loading) {
     return <div className="loading">Loading players...</div>;
   }
@@ -196,7 +227,7 @@ const PlayerAuction = () => {
     );
   }
 
-  const currentPlayer = players[currentPlayerIndex];
+  const currentPlayer = filteredPlayers[currentPlayerIndex];
 
   if (!currentPlayer) {
     return <div className="error">No player data available</div>;
@@ -207,6 +238,33 @@ const PlayerAuction = () => {
       <div className="main-content">
         <div className="auction-header">
           <h1 className="auction-title">IPL Auction 2024</h1>
+          <div className="search-container">
+            <input 
+              type="text" 
+              placeholder="Search Player" 
+              className="search-input"
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+            {showSearchResults && searchQuery.trim() !== '' && (
+              <div className="search-results">
+                {filteredPlayers.map(player => (
+                  <div 
+                    key={player.id} 
+                    className="search-result-item"
+                    onClick={() => handlePlayerSelect(player)}
+                  >
+                    <div className="player-search-name">{player.name}</div>
+                    <div className="player-search-details">
+                      <span>{player.role}</span>
+                      <span>{player.category}</span>
+                      <span>₹{(player.basePrice / 10000000).toFixed(2)} Cr</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="category-display">
